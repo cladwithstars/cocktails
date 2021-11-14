@@ -109,23 +109,25 @@ export const Search = () => {
   };
 
   return (
-    <div>
+    <div className="mt-2 container">
       <button
-        className="border-solid border-4 border-light-blue-500 rounded-lg"
+        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
         onClick={handleClick}
       >
         Get random cocktail
       </button>
-      {cocktailData && (
-        <CocktailCard
-          name={cocktailData.name}
-          instructions={cocktailData.instructions}
-          imgUrl={cocktailData.imgUrl}
-          ingredients={cocktailData.ingredients}
-          measures={cocktailData.measures}
-          formatted={cocktailData.formatted}
-        />
-      )}
+      <div className="mt-2">
+        {cocktailData && (
+          <CocktailCard
+            name={cocktailData.name}
+            instructions={cocktailData.instructions}
+            imgUrl={cocktailData.imgUrl}
+            ingredients={cocktailData.ingredients}
+            measures={cocktailData.measures}
+            formatted={cocktailData.formatted}
+          />
+        )}
+      </div>
     </div>
   );
 };
