@@ -22,7 +22,7 @@ export const Search = () => {
 
   const fetchCocktailById = async (id) => {
     const { data } = await axios.get(
-      `http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+      `http://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/lookup.php?i=${id}`
     );
     return formatData(data);
   };
@@ -41,7 +41,7 @@ export const Search = () => {
   const fetchCocktailBySearchTerm = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchTerm}`
+      `http://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/search.php?s=${searchTerm}`
     );
     if (data && data.drinks) {
       getCocktails(data);
@@ -53,7 +53,7 @@ export const Search = () => {
   const fetchCocktailByIngredient = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchTerm}`
+      `http://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/filter.php?i=${searchTerm}`
     );
     if (data && data.drinks) {
       getCocktails(data);
@@ -64,7 +64,7 @@ export const Search = () => {
 
   const fetchRandomCocktail = async () => {
     const { data } = await axios.get(
-      "http://www.thecocktaildb.com/api/json/v1/1/random.php"
+      `http://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/random.php`
     );
     if (data) {
       const formattedData = formatData(data);
