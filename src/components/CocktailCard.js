@@ -18,8 +18,6 @@ export const CocktailCard = (props) => {
         </div>
         <p class="text-sm text-gray-500 mb-2">{instructions}</p>
         <hr className="pb-2" />
-        {/* <p>{ingredients.map((ingredient) => ingredient)}</p>
-        <p>{measures.map((measure) => measure)}</p> */}
         <h3 className="flex-auto pb-2 text-sm font-semibold"> Ingredients </h3>
         <ul>
           {formatted.map((el) => (
