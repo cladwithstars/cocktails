@@ -5,7 +5,7 @@ export const CocktailCard = (props) => {
 
   return (
     <div class="flex border-solid border-4 border-light-blue-500 rounded-lg">
-      <div class="flex-none w-48 relative">
+      <div class="flex-none w-3/12 relative">
         <img
           src={imgUrl}
           alt="cocktail"

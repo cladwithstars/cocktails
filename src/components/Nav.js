@@ -2,22 +2,26 @@ import React from "react";
 
 export const Nav = () => {
   return (
-    <nav class="bg-blue-500 px-8 pt-2 shadow-md relative">
-      <div className="container mb-2 mt-2">
-        <a href="/" class="font-bold text-white text-xl">
-          Cocktail Finder{" "}
-        </a>
-
-        {/* <div class="-mb-px flex justify-center">
+    <nav class="flex flex-col sm:flex-row sm:text-left sm:justify-between py-4 bg-blue-500 shadow sm:items-baseline w-full">
+      <div className="container flex">
+        <div class="sm:mb-0">
           <a
-            class="no-underline text-white border-b-2 border-teal-dark uppercase tracking-wide font-bold text-xs py-3 mr-8"
             href="/"
+            class="text-2xl no-underline text-white font-bold hover:text-blue-dark"
+          >
+            Cocktail Finder
+          </a>
+        </div>
+        {/* <div>
+          <a
+            href="/"
+            class="text-lg no-underline text-white hover:text-blue-dark ml-2"
           >
             Home
           </a>
           <a
-            class="no-underline text-white border-b-2 border-transparent uppercase tracking-wide font-bold text-xs py-3 mr-8"
             href="/"
+            class="text-lg no-underline text-white hover:text-blue-dark ml-2"
           >
             About
           </a>
