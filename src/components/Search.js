@@ -22,7 +22,7 @@ export const Search = () => {
 
   const fetchCocktailById = async (id) => {
     const { data } = await axios.get(
-      `http://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/lookup.php?i=${id}`
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/lookup.php?i=${id}`
     );
     return formatData(data);
   };
