@@ -140,7 +140,7 @@ export const Search = () => {
         />
       </div>
       {emptyInputMessage && (
-        <div className="mt-1 text-red-600">{emptyInputMessage}</div>
+        <div className="mt-1 mb-1 text-red-600">{emptyInputMessage}</div>
       )}
       <div className="mt-1">
         <label className="items-center mt-2">
