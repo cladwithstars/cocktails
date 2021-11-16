@@ -8,6 +8,7 @@ export const Search = () => {
   const [cocktailData, setCocktailData] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [emptyInputMessage, setEmptyInputMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [checked, setChecked] = useState(false);
 
@@ -24,7 +25,12 @@ export const Search = () => {
     const { data } = await axios.get(
       `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/lookup.php?i=${id}`
     );
-    return formatData(data);
+    console.log("data is: ", data);
+    if (data && data.drinks) {
+      return formatData(data.drinks[0]);
+    } else {
+      return null;
+    }
   };
 
   const getCocktails = async (data) => {
@@ -32,7 +38,9 @@ export const Search = () => {
     for (let i = 0; i < data.drinks.length; i++) {
       const id = data.drinks[i].idDrink;
       const cocktail = await fetchCocktailById(id);
-      cocktails.push(cocktail);
+      if (cocktail) {
+        cocktails.push(cocktail);
+      }
     }
     setLoading(false);
     setCocktailData(cocktails);
@@ -44,7 +52,13 @@ export const Search = () => {
       `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/search.php?s=${searchTerm}`
     );
     if (data && data.drinks) {
-      getCocktails(data);
+      const cocktails = [];
+      for (let i = 0; i < data.drinks.length; i++) {
+        const formattedCocktail = formatData(data.drinks[i]);
+        cocktails.push(formattedCocktail);
+      }
+      setLoading(false);
+      setCocktailData(cocktails);
     } else {
       handleEmptySearch();
     }
@@ -66,8 +80,8 @@ export const Search = () => {
     const { data } = await axios.get(
       `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/random.php`
     );
-    if (data) {
-      const formattedData = formatData(data);
+    if (data && data.drinks) {
+      const formattedData = formatData(data.drinks[0]);
       setCocktailData([formattedData]);
     }
   };
@@ -76,8 +90,16 @@ export const Search = () => {
     setSearchTerm(e.target.value);
   };
 
+  const displayEmptyInputMessage = () => {
+    setEmptyInputMessage("Field cannot be blank");
+    setTimeout(() => {
+      setEmptyInputMessage("");
+    }, 3000);
+  };
   const handleSubmit = () => {
-    if (!checked) {
+    if (!searchTerm) {
+      displayEmptyInputMessage();
+    } else if (!checked) {
       fetchCocktailBySearchTerm();
     } else {
       fetchCocktailByIngredient();
@@ -114,17 +136,20 @@ export const Search = () => {
               ? "Search for cocktails by name..."
               : "Search for cocktails by ingredient..."
           }
-          class="px-3 py-3 mr-2 mt-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-2 border-grey-400"
+          className="px-3 py-3 mr-2 mt-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-2 border-grey-400"
         />
       </div>
+      {emptyInputMessage && (
+        <div className="mt-1 text-red-600">{emptyInputMessage}</div>
+      )}
       <div className="mt-1">
-        <label class="items-center mt-2">
+        <label className="items-center mt-2">
           <input
             type="checkbox"
-            class="form-checkbox h-5 w-5 text-red-600"
+            className="form-checkbox h-5 w-5 text-red-600"
             onChange={handleCheckboxChange}
           />
-          <span class="ml-2 text-gray-700">Search by ingredient</span>
+          <span className="ml-2 text-gray-700">Search by ingredient</span>
         </label>
       </div>
 
@@ -146,11 +171,17 @@ export const Search = () => {
       >
         Clear
       </button>
-
+      {!loading && cocktailData && cocktailData.length > 1 && (
+        <div className="font-semibold mt-1">
+          {" "}
+          Displaying {cocktailData.length} cocktails
+        </div>
+      )}
       <div className="mt-2">
         {!loading && cocktailData && (
           <CocktailList cocktailData={cocktailData} />
         )}
+
         {loading && (
           <div>
             <Loader />

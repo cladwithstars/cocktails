@@ -6,7 +6,7 @@ export const CocktailList = ({ cocktailData }) => {
     <ul>
       {cocktailData &&
         cocktailData.map((cocktail) => (
-          <li className="mb-2">
+          <li className="mb-2" key={cocktail.name}>
             <CocktailCard
               name={cocktail.name}
               instructions={cocktail.instructions}

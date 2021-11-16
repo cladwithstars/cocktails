@@ -1,5 +1,4 @@
-export const formatData = (data) => {
-  const drink = data.drinks[0];
+export const formatData = (drink) => {
   const {
     strDrink,
     strDrinkThumb,
@@ -77,7 +76,10 @@ export const formatData = (data) => {
   const formattedList = () => {
     const res = [];
     for (let i = 0; i < filteredIngredients.length; i++) {
-      const formattedString = `${filteredIngredients[i]} - ${filteredMeasures[i]}`;
+      const formattedString = filteredMeasures[i]
+        ? `${filteredIngredients[i]} - ${filteredMeasures[i]}`
+        : filteredIngredients[i];
+
       res.push(formattedString);
     }
     return res;
