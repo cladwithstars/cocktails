@@ -3,6 +3,7 @@ import axios from "axios";
 import { formatData } from "../functions/formatData";
 import { Loader } from "./Loader";
 import { CocktailList } from "./CocktailList";
+import Modal from "./Modal";
 
 export const Search = () => {
   const [cocktailData, setCocktailData] = useState(null);
@@ -171,6 +172,7 @@ export const Search = () => {
       >
         Clear
       </button>
+      {/* <Modal /> */}
       {!loading && cocktailData && cocktailData.length > 1 && (
         <div className="font-semibold mt-1">
           {" "}
