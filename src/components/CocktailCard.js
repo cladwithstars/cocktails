@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addCocktail } from "../redux/cocktailSlice";
-import { Link } from "react-router-dom";
 
 export const CocktailCard = (props) => {
   const { name, imgUrl, instructions, formatted, saveButton } = props;

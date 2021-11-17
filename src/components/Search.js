@@ -3,7 +3,7 @@ import axios from "axios";
 import { formatData } from "../functions/formatData";
 import { Loader } from "./Loader";
 import { CocktailList } from "./CocktailList";
-import Modal from "./Modal";
+// import Modal from "./Modal";
 
 export const Search = () => {
   const [cocktailData, setCocktailData] = useState(null);
