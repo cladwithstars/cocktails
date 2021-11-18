@@ -121,12 +121,12 @@ function Navbar() {
                   My Cocktails
                 </Link>
 
-                <a
-                  href="/about"
+                <Link
+                  to="/about"
                   className="hover:underline text-white block px-3 py-2 rounded-md text-base font-semibold"
                 >
                   About
-                </a>
+                </Link>
 
                 {/* <a
                   href="/"
