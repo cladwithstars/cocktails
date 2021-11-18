@@ -39,12 +39,12 @@ function Navbar() {
                     About
                   </Link>
 
-                  <a
+                  {/* <a
                     href="/"
                     className="hover:underline text-white px-3 py-2 rounded-md text-sm font-semibold"
                   >
                     Popular Cocktails
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -128,12 +128,12 @@ function Navbar() {
                   About
                 </a>
 
-                <a
+                {/* <a
                   href="/"
                   className=" hover:underline text-white block px-3 py-2 rounded-md text-base font-semibold"
                 >
                   Popular Cocktails
-                </a>
+                </a> */}
               </div>
             </div>
           )}

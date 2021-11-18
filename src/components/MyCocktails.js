@@ -7,7 +7,9 @@ export const MyCocktails = () => {
 
   return (
     <div className="mt-4 container">
-      <h1 className="flex-auto text-xl font-semibold mb-2">My Cocktails </h1>
+      <h1 className="flex-auto text-xl font-semibold text-blue-500 mb-2">
+        My Cocktails{" "}
+      </h1>
       <ul>
         {myCocktails && myCocktails.length > 0 ? (
           myCocktails.map((cocktail) => (

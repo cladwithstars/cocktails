@@ -26,7 +26,6 @@ export const Search = () => {
     const { data } = await axios.get(
       `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/lookup.php?i=${id}`
     );
-    console.log("data is: ", data);
     if (data && data.drinks) {
       return formatData(data.drinks[0]);
     } else {

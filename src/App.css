@@ -27,6 +27,13 @@ body {
   margin-left: auto;
 }
 
+.grow {
+  transition: all 0.1s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.3);
+}
+
 .loader {
   border-top-color: #3498db;
   -webkit-animation: spinner 1.5s linear infinite;
