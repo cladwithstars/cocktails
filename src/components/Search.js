@@ -69,7 +69,7 @@ export const Search = () => {
     const { data } = await axios.get(
       `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/filter.php?i=${searchTerm}`
     );
-    if (data && data.drinks) {
+    if (data && data.drinks && data.drinks !== "None Found") {
       getCocktails(data);
     } else {
       handleEmptySearch();
