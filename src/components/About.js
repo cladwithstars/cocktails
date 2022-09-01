@@ -10,7 +10,7 @@ export const About = () => {
           href="https://www.thecocktaildb.com/"
           target="_blank"
           rel="noreferrer"
-          className="text-blue-500 underline"
+          className="text-pink-500 underline"
         >
           thecocktaildb
         </a>

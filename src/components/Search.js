@@ -136,7 +136,7 @@ export const Search = () => {
               ? "Search for cocktails by name..."
               : "Search for cocktails by ingredient..."
           }
-          className="px-3 py-3 mr-2 mt-2 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-2 border-grey-400"
+          className="px-3 py-3 mr-2 mt-2 placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-2 border-grey-400"
         />
       </div>
       {emptyInputMessage && (
@@ -154,13 +154,13 @@ export const Search = () => {
       </div>
 
       <button
-        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-2 mr-2"
+        className="bg-transparent hover:bg-pink-500 text-pink-700 font-semibold hover:text-white py-2 px-4 border border-pink-500 hover:border-transparent rounded mt-2 mr-2"
         onClick={handleSubmit}
       >
         Search
       </button>
       <button
-        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-2 mr-2"
+        className="bg-transparent hover:bg-pink-500 text-pink-700 font-semibold hover:text-white py-2 px-4 border border-pink-500 hover:border-transparent rounded mt-2 mr-2"
         onClick={handleClick}
       >
         Get random cocktail

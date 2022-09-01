@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Loader = () => {
-  let circleCommonClasses = "h-2.5 w-2.5 bg-blue-500 rounded-full";
+  let circleCommonClasses = "h-2.5 w-2.5 bg-pink-500 rounded-full";
 
   return (
     <div className="flex justify-center items-center mt-2">

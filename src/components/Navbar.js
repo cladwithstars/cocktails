@@ -6,7 +6,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <nav className="bg-blue-500">
+      <nav className="bg-pink-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -52,7 +52,7 @@ function Navbar() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="bg-blue-500 inline-flex items-center justify-center p-2 rounded-md hover:text-white outline-none ring-2 ring-offset-2 ring-white"
+                className="bg-pink-500 inline-flex items-center justify-center p-2 rounded-md hover:text-white outline-none ring-2 ring-offset-2 ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >

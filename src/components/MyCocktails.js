@@ -7,7 +7,7 @@ export const MyCocktails = () => {
 
   return (
     <div className="mt-4 container">
-      <h1 className="flex-auto text-xl font-semibold text-blue-500 mb-2">
+      <h1 className="flex-auto text-xl font-semibold text-pink-500 mb-2">
         My Cocktails{" "}
       </h1>
       <ul>

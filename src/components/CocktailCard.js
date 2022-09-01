@@ -23,7 +23,7 @@ export const CocktailCard = (props) => {
   };
 
   return (
-    <div className="flex border-solid border-4 border-light-blue-500 rounded-lg">
+    <div className="flex border-solid border-4 border-light-pink-500 rounded-lg">
       <div className="flex-none w-3/12 relative">
         <img
           src={imgUrl}
@@ -37,7 +37,7 @@ export const CocktailCard = (props) => {
           {saveButton && !cocktailAlreadySaved(name) && (
             <i
               onClick={handleClick}
-              className="far fa-bookmark fa-2x text-blue-500 cursor-pointer mb-2 grow"
+              className="far fa-bookmark fa-2x text-pink-500 cursor-pointer mb-2 grow"
               title="save cocktail"
             ></i>
           )}
