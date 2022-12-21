@@ -184,15 +184,15 @@ export const Search = () => {
         Clear
       </button>
       {/* <Modal /> */}
-      {!loading && cocktailData && cocktailData.length > 1 && (
+      {!loading && searchResults && searchResults.length > 1 && (
         <div className="font-semibold mt-1">
           {" "}
-          Displaying {cocktailData.length} cocktails
+          Displaying {searchResults.length} cocktails
         </div>
       )}
       <div className="mt-2">
-        {!loading && cocktailData && (
-          <CocktailList cocktailData={cocktailData} />
+        {!loading && searchResults && (
+          <CocktailList cocktailData={searchResults} />
         )}
 
         {loading && (

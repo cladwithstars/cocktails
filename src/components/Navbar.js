@@ -14,7 +14,7 @@ function Navbar() {
                 to="/"
                 className="hover:underline flex-shrink-0 text-white font-bold text-xl"
               >
-                Cocktail Finder
+                Cocktail Finder!
               </Link>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
