@@ -11,6 +11,11 @@ export const CocktailCard = (props) => {
 
   const handleClick = () => {
     dispatch(addCocktail({ name, imgUrl, instructions, formatted }));
+    const cocktails = [];
+
+    savedCocktails.forEach((cocktail) => cocktails.push(cocktail));
+
+    localStorage.setItem("cocktails", JSON.stringify(cocktails));
     setOpenModal(true);
   };
 

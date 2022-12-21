@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const cocktails = JSON.parse(localStorage.getItem("cocktails"));
+
 const initialState = {
-  savedCocktails: [],
+  savedCocktails: cocktails ? cocktails : [],
 };
 
 export const cocktailSlice = createSlice({
