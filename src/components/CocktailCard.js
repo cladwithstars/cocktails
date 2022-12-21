@@ -5,16 +5,16 @@ import Modal from "./Modal";
 
 export const CocktailCard = (props) => {
   const { name, imgUrl, instructions, formatted, saveButton } = props;
-  const savedCocktails = useSelector((state) => state.savedCocktails);
+  const savedCocktails = useSelector((state) => state.cocktails.savedCocktails);
   const [openModal, setOpenModal] = React.useState(false);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(addCocktail({ name, imgUrl, instructions, formatted }));
+    const newCocktail = { name, imgUrl, instructions, formatted };
+    dispatch(addCocktail(newCocktail));
     const cocktails = [];
-
     savedCocktails.forEach((cocktail) => cocktails.push(cocktail));
-
+    cocktails.push(newCocktail);
     localStorage.setItem("cocktails", JSON.stringify(cocktails));
     setOpenModal(true);
   };

@@ -1,21 +1,29 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { formatData } from "../functions/formatData";
 import { Loader } from "./Loader";
 import { CocktailList } from "./CocktailList";
+import { updateSearchResults } from "../redux/searchResultsSlice";
 // import Modal from "./Modal";
 
 export const Search = () => {
+  const searchResults = useSelector(
+    (state) => state.searchResults.searchResults
+  );
+  console.log(searchResults);
   const [cocktailData, setCocktailData] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [emptyInputMessage, setEmptyInputMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [checked, setChecked] = useState(false);
+  const dispatch = useDispatch();
 
   const handleEmptySearch = () => {
     setLoading(false);
-    setCocktailData(null);
+    dispatch(updateSearchResults([]));
+    // setCocktailData(null);
     setErrorMessage("No cocktail found. Try another search...");
     setTimeout(() => {
       setErrorMessage("");
@@ -43,7 +51,8 @@ export const Search = () => {
       }
     }
     setLoading(false);
-    setCocktailData(cocktails);
+    dispatch(updateSearchResults(cocktails));
+    // setCocktailData(cocktails);
   };
 
   const fetchCocktailBySearchTerm = async () => {
@@ -58,7 +67,8 @@ export const Search = () => {
         cocktails.push(formattedCocktail);
       }
       setLoading(false);
-      setCocktailData(cocktails);
+      dispatch(updateSearchResults(cocktails));
+      // setCocktailData(cocktails);
     } else {
       handleEmptySearch();
     }
@@ -82,7 +92,8 @@ export const Search = () => {
     );
     if (data && data.drinks) {
       const formattedData = formatData(data.drinks[0]);
-      setCocktailData([formattedData]);
+      dispatch(updateSearchResults([formattedData]));
+      // setCocktailData([formattedData]);
     }
   };
 
@@ -115,7 +126,8 @@ export const Search = () => {
   };
 
   const handleClear = () => {
-    setCocktailData(null);
+    dispatch(updateSearchResults([]));
+    // setCocktailData(null);
     setSearchTerm("");
   };
 

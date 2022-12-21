@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { CocktailCard } from "./CocktailCard";
 
 export const MyCocktails = () => {
-  const myCocktails = useSelector((state) => state.savedCocktails);
+  const myCocktails = useSelector((state) => state.cocktails.savedCocktails);
 
   return (
     <div className="mt-4 container">
