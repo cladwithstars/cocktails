@@ -1,10 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCocktail } from "../redux/cocktailSlice";
+import { addCocktail, deleteCocktail } from "../redux/cocktailSlice";
 import Modal from "./Modal";
 
-export const CocktailCard = (props) => {
-  const { name, imgUrl, instructions, formatted, saveButton } = props;
+export const CocktailCard = ({
+  name,
+  imgUrl,
+  instructions,
+  formatted,
+  saveButton,
+  deleteButton,
+}) => {
   const savedCocktails = useSelector((state) => state.cocktails.savedCocktails);
   const [openModal, setOpenModal] = React.useState(false);
   const dispatch = useDispatch();
@@ -17,6 +23,14 @@ export const CocktailCard = (props) => {
     cocktails.push(newCocktail);
     localStorage.setItem("cocktails", JSON.stringify(cocktails));
     setOpenModal(true);
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteCocktail(name));
+    const cocktails = savedCocktails.filter(
+      (cocktail) => cocktail.name !== name
+    );
+    localStorage.setItem("cocktails", JSON.stringify(cocktails));
   };
 
   const cocktailAlreadySaved = (name) => {
@@ -51,6 +65,13 @@ export const CocktailCard = (props) => {
             <i
               className="fas fa-check fa-2x text-green-500 mb-2"
               title="saved"
+            ></i>
+          )}
+          {deleteButton && (
+            <i
+              onClick={handleDelete}
+              className="fa fa-trash fa-2x text-red-500 mb-2 grow cursor-pointer"
+              title="delete"
             ></i>
           )}
           {openModal && <Modal open={openModal} />}

@@ -22,14 +22,12 @@ export const MyCocktails = () => {
                 measures={cocktail.measures}
                 formatted={cocktail.formatted}
                 saveButton={false}
+                deleteButton={true}
               />
             </li>
           ))
         ) : (
-          <div>
-            {" "}
-            It doesn't look like you've saved any cocktails yet! Party pooper.{" "}
-          </div>
+          <div> It doesn't look like you've saved any cocktails yet! </div>
         )}
       </ul>
     </div>

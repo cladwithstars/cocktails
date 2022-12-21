@@ -13,10 +13,15 @@ export const cocktailSlice = createSlice({
     addCocktail: (state, action) => {
       state.savedCocktails.push(action.payload);
     },
+    deleteCocktail: (state, action) => {
+      state.savedCocktails = state.savedCocktails.filter(
+        (cocktail) => cocktail.name !== action.payload
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addCocktail } = cocktailSlice.actions;
+export const { addCocktail, deleteCocktail } = cocktailSlice.actions;
 
 export default cocktailSlice.reducer;

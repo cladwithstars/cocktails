@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const searchResultsSlice = createSlice({
-  name: "cocktail",
+  name: "searchResults",
   initialState,
   reducers: {
     updateSearchResults: (state, action) => {
