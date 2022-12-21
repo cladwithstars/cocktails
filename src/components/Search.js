@@ -4,26 +4,25 @@ import axios from "axios";
 import { formatData } from "../functions/formatData";
 import { Loader } from "./Loader";
 import { CocktailList } from "./CocktailList";
-import { updateSearchResults } from "../redux/searchResultsSlice";
-// import Modal from "./Modal";
+import {
+  updateSearchResults,
+  updateQueryString,
+  updateChecked,
+} from "../redux/searchResultsSlice";
 
 export const Search = () => {
-  const searchResults = useSelector(
-    (state) => state.searchResults.searchResults
+  const { searchResults, queryString, checked } = useSelector(
+    (state) => state.searchResults
   );
-  console.log(searchResults);
-  const [cocktailData, setCocktailData] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+
   const [errorMessage, setErrorMessage] = useState("");
   const [emptyInputMessage, setEmptyInputMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
 
   const handleEmptySearch = () => {
     setLoading(false);
     dispatch(updateSearchResults([]));
-    // setCocktailData(null);
     setErrorMessage("No cocktail found. Try another search...");
     setTimeout(() => {
       setErrorMessage("");
@@ -36,9 +35,8 @@ export const Search = () => {
     );
     if (data && data.drinks) {
       return formatData(data.drinks[0]);
-    } else {
-      return null;
     }
+    return null;
   };
 
   const getCocktails = async (data) => {
@@ -52,13 +50,12 @@ export const Search = () => {
     }
     setLoading(false);
     dispatch(updateSearchResults(cocktails));
-    // setCocktailData(cocktails);
   };
 
   const fetchCocktailBySearchTerm = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/search.php?s=${searchTerm}`
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/search.php?s=${queryString}`
     );
     if (data && data.drinks) {
       const cocktails = [];
@@ -68,7 +65,6 @@ export const Search = () => {
       }
       setLoading(false);
       dispatch(updateSearchResults(cocktails));
-      // setCocktailData(cocktails);
     } else {
       handleEmptySearch();
     }
@@ -77,7 +73,7 @@ export const Search = () => {
   const fetchCocktailByIngredient = async () => {
     setLoading(true);
     const { data } = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/filter.php?i=${searchTerm}`
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_API_KEY}/filter.php?i=${queryString}`
     );
     if (data && data.drinks && data.drinks !== "None Found") {
       getCocktails(data);
@@ -93,12 +89,11 @@ export const Search = () => {
     if (data && data.drinks) {
       const formattedData = formatData(data.drinks[0]);
       dispatch(updateSearchResults([formattedData]));
-      // setCocktailData([formattedData]);
     }
   };
 
   const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
+    dispatch(updateQueryString(e.target.value));
   };
 
   const displayEmptyInputMessage = () => {
@@ -108,7 +103,7 @@ export const Search = () => {
     }, 3000);
   };
   const handleSubmit = () => {
-    if (!searchTerm) {
+    if (!queryString) {
       displayEmptyInputMessage();
     } else if (!checked) {
       fetchCocktailBySearchTerm();
@@ -121,14 +116,9 @@ export const Search = () => {
     fetchRandomCocktail();
   };
 
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
-  };
-
   const handleClear = () => {
     dispatch(updateSearchResults([]));
-    // setCocktailData(null);
-    setSearchTerm("");
+    dispatch(updateQueryString(""));
   };
 
   return (
@@ -136,7 +126,7 @@ export const Search = () => {
       <div className="flex flex-wrap">
         <input
           type="text"
-          value={searchTerm}
+          value={queryString}
           onChange={handleInputChange}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -159,7 +149,8 @@ export const Search = () => {
           <input
             type="checkbox"
             className="form-checkbox h-5 w-5 text-red-600"
-            onChange={handleCheckboxChange}
+            checked={checked}
+            onChange={() => dispatch(updateChecked(!checked))}
           />
           <span className="ml-2 text-gray-700">Search by ingredient</span>
         </label>
@@ -183,7 +174,6 @@ export const Search = () => {
       >
         Clear
       </button>
-      {/* <Modal /> */}
       {!loading && searchResults && searchResults.length > 1 && (
         <div className="font-semibold mt-1">
           {" "}
