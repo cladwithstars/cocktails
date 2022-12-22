@@ -80,8 +80,8 @@ export const CocktailCard = ({
         <hr className="pb-2" />
         <h3 className="flex-auto pb-2 text-sm font-semibold"> Ingredients </h3>
         <ul>
-          {formatted.map((el) => (
-            <li className="text-sm" key={el.name}>
+          {formatted.map((el, idx) => (
+            <li className="text-sm" key={`${el.name} ${idx}`}>
               {el}
             </li>
           ))}
