@@ -31,7 +31,7 @@ export const MyCocktails = () => {
       <h1 className="flex-auto text-xl font-semibold text-pink-500 mb-2">
         My Cocktails{" "}
       </h1>
-      {savedCocktails && savedCocktails.length && (
+      {savedCocktails && savedCocktails.length ? (
         <input
           type="text"
           value={filterString}
@@ -39,7 +39,7 @@ export const MyCocktails = () => {
           placeholder={"Search my cocktails"}
           className="px-3 py-3 mr-2 mt-2 mb-2 placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-2 border-grey-400"
         />
-      )}
+      ) : null}
       <ul>
         {filteredCocktails && filteredCocktails.length > 0 ? (
           filteredCocktails.map((cocktail) => (

@@ -12,7 +12,7 @@ export const cocktailSlice = createSlice({
   initialState,
   reducers: {
     addCocktail: (state, action) => {
-      state.savedCocktails.push(action.payload);
+      state.savedCocktails.unshift(action.payload);
     },
     deleteCocktail: (state, action) => {
       state.savedCocktails = state.savedCocktails.filter(
