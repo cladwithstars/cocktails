@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+
 import { formatData } from "../functions/formatData";
 import { Loader } from "./Loader";
 import { CocktailList } from "./CocktailList";
@@ -18,7 +18,7 @@ import {
   useGetRandomCocktailQuery,
   useGetCocktailByNameQuery,
   useGetCocktailByIngredientQuery,
-  useGetCocktailByIdQuery,
+  // useGetCocktailByIdQuery,
 } from "../redux/cocktailApi";
 
 export const Search = () => {
@@ -58,13 +58,10 @@ export const Search = () => {
   } = useGetCocktailByNameQuery(submittedCocktailName, {
     skip: skipName,
   });
-  const {
-    data: byIngredientCocktailsData,
-    error: byIngredientCocktailsError,
-    isFetching: byIngredientCocktailsLoading,
-  } = useGetCocktailByIngredientQuery(submittedCocktailIngredient, {
-    skip: skipIngredient,
-  });
+  const { data: byIngredientCocktailsData, error: byIngredientCocktailsError } =
+    useGetCocktailByIngredientQuery(submittedCocktailIngredient, {
+      skip: skipIngredient,
+    });
 
   const serverError =
     byNameCocktailsError || randomCocktailError || byIngredientCocktailsError;
