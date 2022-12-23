@@ -5,7 +5,7 @@
   "dependencies": {
     "@craco/craco": "^6.4.0",
     "@headlessui/react": "^1.4.2",
-    "@reduxjs/toolkit": "^1.6.2",
+    "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

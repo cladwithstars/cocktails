@@ -15,6 +15,12 @@ export const About = () => {
           thecocktaildb
         </a>
       </p>
+      <h5 className="font-bold mt-10">Technical info</h5>
+      <p>
+        Though there is no authentication or database, your saved cocktails will
+        persist through refreshes because they are written to local storage.
+        Built using React, Redux, RTK Query, and Tailwind.
+      </p>
     </div>
   );
 };

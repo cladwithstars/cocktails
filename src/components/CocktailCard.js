@@ -20,7 +20,7 @@ export const CocktailCard = ({
     dispatch(addCocktail(newCocktail));
     const cocktails = [];
     savedCocktails.forEach((cocktail) => cocktails.push(cocktail));
-    cocktails.push(newCocktail);
+    cocktails.unshift(newCocktail);
     localStorage.setItem("cocktails", JSON.stringify(cocktails));
     setOpenModal(true);
   };
