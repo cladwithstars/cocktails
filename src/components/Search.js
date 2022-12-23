@@ -86,7 +86,7 @@ export const Search = () => {
       dispatch(setLoading(false));
       setEmptyFetch(true);
     }
-  }, [randomCocktailData, skipRandom]);
+  }, [randomCocktailData, skipRandom]); // eslint-disable-line
 
   useEffect(() => {
     if (byNameCocktailsData && byNameCocktailsData.drinks) {
@@ -103,7 +103,7 @@ export const Search = () => {
       setEmptyFetch(true);
       dispatch(updateByNameCocktails([]));
     }
-  }, [byNameCocktailsData, skipName]);
+  }, [byNameCocktailsData, skipName]); // eslint-disable-line
 
   const fetchByIngredient = async (id) => {
     const cocktails = [];
