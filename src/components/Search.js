@@ -167,9 +167,7 @@ export const Search = () => {
   };
 
   const clearResults = () => {
-    dispatch(updateRandomCocktail([]));
-    dispatch(updateByIngredientCocktails([]));
-    dispatch(updateByNameCocktails([]));
+    dispatch(setDisplayState(null));
   };
 
   const handleClear = () => {
@@ -254,6 +252,7 @@ export const Search = () => {
       )}
       {!fetchOngoing &&
         displayState !== "random" &&
+        displayState !== null &&
         resultsNumber() !== null &&
         resultsNumber() > 1 && (
           <div className="font-semibold mt-1">
