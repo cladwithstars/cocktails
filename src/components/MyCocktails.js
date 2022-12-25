@@ -18,7 +18,7 @@ export const MyCocktails = () => {
       return (
         name?.toLowerCase().includes(lowerCaseFilterString) ||
         formatted
-          ?.reduce((acc, elem) => acc + " " + elem, "")
+          ?.reduce((acc, elem) => acc + " " + elem.toLowerCase(), "")
           .includes(lowerCaseFilterString)
       );
     });

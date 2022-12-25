@@ -33,7 +33,6 @@ export const Search = () => {
     displayState,
   } = useSelector((state) => state.searchResults);
 
-  const [emptyFetch, setEmptyFetch] = useState(false);
   const [emptyInputError, setEmptyInputError] = useState(false);
   const [randomCocktailToken, setRandomCocktailToken] = useState(0);
   const [ingredientToken, setIngredientToken] = useState(0);
@@ -84,7 +83,6 @@ export const Search = () => {
       dispatch(updateRandomCocktail([formattedData]));
     } else if (!skipRandom) {
       dispatch(setLoading(false));
-      setEmptyFetch(true);
     }
   }, [randomCocktailData, skipRandom]); // eslint-disable-line
 
@@ -93,14 +91,9 @@ export const Search = () => {
       const cocktails = byNameCocktailsData.drinks.map((rawDataCocktail) =>
         formatData(rawDataCocktail)
       );
-      if (cocktails.length === 0 && !skipName) {
-        setEmptyFetch(true);
-      } else if (emptyFetch) {
-        setEmptyFetch(false);
-      }
+
       dispatch(updateByNameCocktails(cocktails));
     } else if (!skipName) {
-      setEmptyFetch(true);
       dispatch(updateByNameCocktails([]));
     }
   }, [byNameCocktailsData, skipName]); // eslint-disable-line
@@ -115,10 +108,6 @@ export const Search = () => {
       }
     }
 
-    if (cocktails.length === 0 && !skipIngredient) {
-      setEmptyFetch(true);
-    }
-
     dispatch(updateByIngredientCocktails(cocktails));
     dispatch(setLoading(false));
   };
@@ -128,8 +117,6 @@ export const Search = () => {
       byIngredientCocktailsData?.drinks === "None Found" &&
       ingredientToken > 0
     ) {
-      setEmptyFetch(true);
-
       dispatch(updateByIngredientCocktails([]));
       dispatch(setLoading(false));
     } else if (
@@ -143,7 +130,6 @@ export const Search = () => {
   }, [byIngredientCocktailsData]); // eslint-disable-line
 
   const handleClick = () => {
-    setEmptyFetch(false);
     setEmptyInputError(false);
     dispatch(setDisplayState("random"));
     setRandomCocktailToken((prev) => prev + 1);
@@ -187,10 +173,25 @@ export const Search = () => {
   };
 
   const handleClear = () => {
-    setEmptyFetch(false);
     setEmptyInputError(false);
     clearResults();
     dispatch(updateQueryString(""));
+  };
+
+  const emptyResults = () => {
+    if (displayState === null) return false;
+    if (
+      displayState === "name" &&
+      (!byNameCocktails || byNameCocktails.length === 0)
+    )
+      return true;
+    else if (
+      displayState === "ingredient" &&
+      (!byIngredientCocktails || byIngredientCocktails.length === 0)
+    )
+      return true;
+    else if (displayState === "random" && !randomCocktail) return true;
+    return false;
   };
 
   return (
@@ -260,7 +261,7 @@ export const Search = () => {
             Displaying {resultsNumber()} cocktails
           </div>
         )}
-      {!fetchOngoing && emptyFetch && (
+      {!fetchOngoing && emptyResults() && (
         <div className="font-semibold mt-1">
           {" "}
           Couldn't find any matching cocktails. Try another search
