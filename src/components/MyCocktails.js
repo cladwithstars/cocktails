@@ -28,16 +28,13 @@ export const MyCocktails = () => {
 
   return (
     <div className="mt-4 container">
-      <h1 className="flex-auto text-xl font-semibold text-pink-500 mb-2">
-        My Cocktails{" "}
-      </h1>
       {savedCocktails && savedCocktails.length ? (
         <input
           type="text"
           value={filterString}
           onChange={handleChange}
           placeholder={"Search my cocktails"}
-          className="px-3 py-3 mr-2 mt-2 mb-2 placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-2 border-grey-400"
+          className="px-3 py-3 mr-2 mt-2 mb-2 border placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-4 border-black"
         />
       ) : null}
       <ul>

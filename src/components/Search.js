@@ -193,7 +193,7 @@ export const Search = () => {
   };
 
   return (
-    <div className="mt-4 container">
+    <div className="mt-4 pb-4 container">
       <div className="flex flex-wrap">
         <input
           type="text"
@@ -209,7 +209,7 @@ export const Search = () => {
               ? "Search for cocktails by name..."
               : "Search for cocktails by ingredient..."
           }
-          className="px-3 py-3 mr-2 mt-2 placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-2 border-grey-400"
+          className="px-3 py-3 mr-2 mt-2 mb-2 border placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-4 border-black"
         />
       </div>
       {emptyInputError && (
@@ -219,7 +219,7 @@ export const Search = () => {
         <label className="items-center mt-2">
           <input
             type="checkbox"
-            className="form-checkbox h-5 w-5 text-red-600"
+            className="form-checkbox h-5 w-5 text-red-600 cursor-pointer"
             checked={checked}
             onChange={() => dispatch(updateChecked(!checked))}
           />

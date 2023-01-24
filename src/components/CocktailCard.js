@@ -42,12 +42,12 @@ export const CocktailCard = ({
   };
 
   return (
-    <div className="flex border-solid border-4 border-light-pink-500 rounded-lg">
+    <div className="flex p-2 rounded-lg">
       <div className="flex-none w-3/12 relative">
         <img
           src={imgUrl}
           alt="cocktail"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover rounded"
         />
       </div>
       <div className="flex-auto p-6">

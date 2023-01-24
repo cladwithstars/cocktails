@@ -3,7 +3,7 @@ import { CocktailCard } from "./CocktailCard";
 
 export const CocktailList = ({ cocktailData }) => {
   return (
-    <div>
+    <div class="p-4">
       <ul>
         {cocktailData &&
           cocktailData.map((cocktail) => (
