@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { CocktailCard } from "./CocktailCard";
+import { CocktailCard } from "../components/CocktailCard";
 import { setFilterString } from "../redux/cocktailSlice";
 
 export const MyCocktails = () => {
@@ -27,14 +27,14 @@ export const MyCocktails = () => {
   const handleChange = (e) => dispatch(setFilterString(e.target.value));
 
   return (
-    <div className="mt-4 container">
+    <div className="mt-4 container mt-20">
       {savedCocktails && savedCocktails.length ? (
         <input
           type="text"
           value={filterString}
           onChange={handleChange}
           placeholder={"Search my cocktails"}
-          className="px-3 py-3 mr-2 mt-2 mb-2 border placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-4 border-black"
+          className="px-3 py-3 mr-2 mt-2 mb-2 border placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-4 border-grey-900"
         />
       ) : null}
       <ul>

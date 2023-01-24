@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { formatData } from "../functions/formatData";
-import { Loader } from "./Loader";
-import { CocktailList } from "./CocktailList";
+import { Loader } from "../components/Loader";
+import { CocktailList } from "../components/CocktailList";
 import {
   updateRandomCocktail,
   updateByIngredientCocktails,
@@ -21,7 +21,7 @@ import {
   // useGetCocktailByIdQuery,
 } from "../redux/cocktailApi";
 
-export const Search = () => {
+export const Home = () => {
   const dispatch = useDispatch();
   const {
     randomCocktail,
@@ -193,7 +193,7 @@ export const Search = () => {
   };
 
   return (
-    <div className="mt-4 pb-4 container">
+    <div className="mt-20 pb-4 container relative">
       <div className="flex flex-wrap">
         <input
           type="text"
@@ -209,7 +209,7 @@ export const Search = () => {
               ? "Search for cocktails by name..."
               : "Search for cocktails by ingredient..."
           }
-          className="px-3 py-3 mr-2 mt-2 mb-2 border placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-4 border-black"
+          className="px-3 py-3 mr-2 mt-2 mb-2 border placeholder-pinkGray-300 text-pinkGray-600 relative bg-white bg-white rounded text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full border-solid border-4 border-grey-900"
         />
       </div>
       {emptyInputError && (

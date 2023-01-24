@@ -2,7 +2,7 @@ import React from "react";
 
 export const About = () => {
   return (
-    <div className="container mt-2">
+    <div className="container mt-20">
       <p>An app to find cocktails and save the ones you like. </p>{" "}
       <p>
         Uses{" "}
