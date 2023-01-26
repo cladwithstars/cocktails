@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   return (
     <nav className="bg-pink-500 fixed top-0 z-30 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,6 +13,7 @@ function Navbar() {
           <div className="flex items-center">
             <Link
               to="/"
+              onClick={scrollToTop}
               className="hover:underline flex-shrink-0 text-white font-bold text-xl"
             >
               Cocktail Finder!
@@ -19,6 +22,7 @@ function Navbar() {
               <div className="ml-10 flex items-baseline space-x-4">
                 <Link
                   to="/"
+                  onClick={scrollToTop}
                   className="hover:underline text-white px-3 py-2 rounded-md text-sm font-semibold"
                 >
                   Home
@@ -26,6 +30,7 @@ function Navbar() {
 
                 <Link
                   to="/saved-cocktails"
+                  onClick={scrollToTop}
                   className="hover:underline text-white px-3 py-2 rounded-md text-sm font-semibold"
                 >
                   My Cocktails
